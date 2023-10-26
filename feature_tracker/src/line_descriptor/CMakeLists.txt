@@ -1,6 +1,13 @@
 project( line-descriptor )
 
 cmake_minimum_required(VERSION 2.7)
+
+# OpenCV 重定向
+# set(cv_bridge_DIR /home/orin-nx1/opencv_ws/cv_bridge_melodic/usr/local/share/cv_bridge/cmake)
+Set(OpenCV_DIR /usr/local/share/OpenCV) 
+Set(OpenCV_INCLUDE_DIRS "/usr/local/include")
+Set(OpenCV_LIBRARIES "/usr/local/lib")
+
 find_package( OpenCV 3 REQUIRED)
 
 if(COMMAND cmake_policy)

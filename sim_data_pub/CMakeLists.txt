@@ -5,6 +5,12 @@ set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_FLAGS "-std=c++11")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
 
+# OpenCV 重定向
+set(cv_bridge_DIR /home/orin-nx1/opencv_ws/cv_bridge_melodic/usr/local/share/cv_bridge/cmake)
+Set(OpenCV_DIR /usr/local/share/OpenCV) 
+Set(OpenCV_INCLUDE_DIRS "/usr/local/include")
+Set(OpenCV_LIBRARIES "/usr/local/lib")
+
 find_package(catkin REQUIRED COMPONENTS
     roscpp
     std_msgs
@@ -12,7 +18,7 @@ find_package(catkin REQUIRED COMPONENTS
     cv_bridge
     )
 
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 3 REQUIRED)
 
 catkin_package()
 

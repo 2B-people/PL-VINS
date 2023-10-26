@@ -507,9 +507,9 @@ int main(int argc, char **argv)
         // std::ofstream fout(VINS_RESULT_PATH, std::ios::out);
         // fout.close();
         fsSettings.release();
-        std::ofstream foutC("/home/healer/catkin_PLVINS/src/PL-VINS/Trajactory/tum_fast_plvins_loop.txt", std::ios::out);
+        std::ofstream foutC("/home/orin-nx1/catkin_ws/src/PL-VINS/Trajactory/tum_fast_plvins_loop.txt", std::ios::out);
         foutC.close();
-        std::ofstream foutC1("/home/healer/catkin_PLVINS/src/PL-VINS/Trajactory/evo_fast_plvins_loop.txt", std::ios::out);
+        std::ofstream foutC1("/home/orin-nx1/catkin_ws/src/PL-VINS/Trajactory/evo_fast_plvins_loop.txt", std::ios::out);
         foutC1.close();     
        
 

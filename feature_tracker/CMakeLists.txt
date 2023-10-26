@@ -5,6 +5,13 @@ set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_FLAGS "-std=c++11")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
 
+# OpenCV 重定向
+set(cv_bridge_DIR /home/orin-nx1/opencv_ws/cv_bridge_melodic/usr/local/share/cv_bridge/cmake)
+Set(OpenCV_DIR /usr/local/share/OpenCV) 
+Set(OpenCV_INCLUDE_DIRS "/usr/local/include")
+Set(OpenCV_LIBRARIES "/usr/local/lib")
+
+
 find_package(catkin REQUIRED COMPONENTS
     roscpp
     std_msgs
@@ -13,8 +20,9 @@ find_package(catkin REQUIRED COMPONENTS
     camera_model
     message_filters
     )
-Set(OpenCV_DIR "/home/healer/Downloads/opencv3.2/opencv-3.2.0/build") # important find opencv version
-find_package(OpenCV 3.2 QUIET)
+# Set(OpenCV_DIR "/home/healer/Downloads/opencv3.2/opencv-3.2.0/build") # important find opencv version
+
+find_package(OpenCV 3 QUIET)
 
 catkin_package()
 
@@ -27,7 +35,7 @@ find_package(Eigen3  REQUIRED)
 include_directories(
   ${catkin_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIR}
-  /home/healer/catkin_PLVINS/src/PL-VINS/feature_tracker/src/line_descriptor/include # find LSD 
+  /home/orin-nx1/catkin_ws/src/PL-VINS/feature_tracker/src/line_descriptor/include # find LSD 
 ) 
 
 add_executable(feature_tracker
@@ -36,7 +44,7 @@ add_executable(feature_tracker
     src/feature_tracker.cpp
     )
 
-target_link_libraries(feature_tracker ${catkin_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(feature_tracker ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 # line detect and match
 add_executable(LineFeature_tracker    
@@ -58,5 +66,5 @@ add_executable(LineFeature_tracker
 target_link_libraries(LineFeature_tracker 
 ${catkin_LIBRARIES} 
 ${OpenCV_LIBS}
-/home/healer/catkin_PLVINS/src/PL-VINS/feature_tracker/src/line_descriptor/lib/liblinedesc.so  # line feature
+/home/orin-nx1/catkin_ws/src/PL-VINS/feature_tracker/src/line_descriptor/lib/liblinedesc.so  # line feature
 )

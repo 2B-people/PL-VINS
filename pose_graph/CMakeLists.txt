@@ -6,6 +6,12 @@ set(CMAKE_CXX_FLAGS "-std=c++11")
 #-DEIGEN_USE_MKL_ALL")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
 
+# OpenCV 重定向
+set(cv_bridge_DIR /home/orin-nx1/opencv_ws/cv_bridge_melodic/usr/local/share/cv_bridge/cmake)
+Set(OpenCV_DIR /usr/local/share/OpenCV) 
+Set(OpenCV_INCLUDE_DIRS "/usr/local/include")
+Set(OpenCV_LIBRARIES "/usr/local/lib")
+
 find_package(catkin REQUIRED COMPONENTS
     roscpp
     std_msgs
@@ -15,7 +21,8 @@ find_package(catkin REQUIRED COMPONENTS
     roslib
     )
 
-find_package(OpenCV)
+find_package(OpenCV 3 REQUIRED)
+
 
 
 find_package(Ceres REQUIRED)
